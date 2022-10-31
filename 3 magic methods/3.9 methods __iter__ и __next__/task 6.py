@@ -3,7 +3,8 @@ from typing import Any
 
 class Matrix:
     def __init__(self, rows_or_list: (int, list), cols: int = 0, fill_value: (int, float) = 0) -> None:
-        if not isinstance(rows_or_list, (int, list)) or not isinstance(cols,int) or not isinstance(fill_value, (int, float)):
+        if not isinstance(rows_or_list, (int, list)) or not isinstance(cols, int) or not isinstance(fill_value,
+                                                                                                    (int, float)):
             raise TypeError('аргументы rows, cols - целые числа; fill_value - произвольное число')
 
         if isinstance(rows_or_list, list):
@@ -16,7 +17,7 @@ class Matrix:
         else:
             self.rows = rows_or_list
             self.cols = cols
-            self.lst = [[fill_value]*self.cols for _ in range(self.rows)]
+            self.lst = [[fill_value] * self.cols for _ in range(self.rows)]
 
     def __getitem__(self, item: tuple) -> (int, float):
         if not isinstance(item, tuple) or 0 > item[0] > self.rows or 0 > item[1] > self.cols:
@@ -42,7 +43,8 @@ class Matrix:
             if self.rows != other.rows or self.cols != other.cols:
                 raise ValueError('операции возможны только с матрицами равных размеров')
 
-            return Matrix([[self.lst[row][col] + other.lst[row][col] for col in range(self.cols)] for row in range(self.rows)])
+            return Matrix(
+                [[self.lst[row][col] + other.lst[row][col] for col in range(self.cols)] for row in range(self.rows)])
 
     def __sub__(self, other: (int, object)) -> object:
         if type(other) == int:
@@ -53,7 +55,8 @@ class Matrix:
             if self.rows != other.rows or self.cols != other.cols:
                 raise ValueError('операции возможны только с матрицами равных размеров')
 
-            return Matrix([[self.lst[row][col] - other.lst[row][col] for col in range(self.cols)] for row in range(self.rows)])
+            return Matrix(
+                [[self.lst[row][col] - other.lst[row][col] for col in range(self.cols)] for row in range(self.rows)])
 
     @staticmethod
     def is_digit(value: Any) -> bool:
