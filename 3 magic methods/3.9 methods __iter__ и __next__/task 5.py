@@ -25,7 +25,7 @@ class TableValues:
         if not isinstance(item, tuple) or 0 > item[0] > self.rows or 0 > item[1] > self.cols:
             raise IndexError('неверный индекс')
 
-        return self.lst[item[0]][item[1]]
+        return self.lst[item[0]][item[1]].data
 
     def __setitem__(self, key: tuple, value: int) -> None:
         if not isinstance(key, tuple) or 0 > key[0] > self.rows or 0 > key[1] > self.cols:
@@ -38,26 +38,13 @@ class TableValues:
 
     def __iter__(self):
         self.current_row = 0
-        self.current_coll = 0
         return self
 
     def __next__(self):
-        if self.current_row < len(self.lst) and self.current_coll < len(self.lst[self.current_row]):
-            temp_res = self.lst[self.current_row]
+        if self.current_row < len(self.lst):
+            temp_res = (val.data for val in self.lst[self.current_row])
             self.current_row += 1
             return temp_res
 
-        # elif self.current_coll >= len(self.lst[self.current_row])-1:
-        #     # temp_res = self.lst[self.current_row][self.current_coll]
-        #     self.current_coll = 0
-        #     self.current_row += 1
-        #     return self.lst[self.current_row][self.current_coll].data
         else:
             raise StopIteration
-
-
-test = TableValues(3, 3)
-for row in test:
-    for value in row:
-        print(value)
-
