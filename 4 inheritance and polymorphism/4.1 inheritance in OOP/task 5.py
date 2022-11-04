@@ -26,6 +26,6 @@ class FloatValidator(Validator):
         self.max_value = max_value
 
     def is_valid(self, data: Any) -> bool:
-        if type(data) == int and self.max_value >= data >= self.min_value:
+        if type(data) == float and self.max_value >= data >= self.min_value:
             return True
         raise ValueError('данные не прошли валидацию')
