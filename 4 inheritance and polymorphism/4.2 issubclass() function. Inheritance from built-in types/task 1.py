@@ -16,9 +16,3 @@ class ListInteger(list):
         if type(value) != int:
             raise TypeError('можно передавать только целочисленные значения')
         return value
-
-s = ListInteger((1, 2, 3))
-s[1] = 10
-s.append(11)
-print(s)
-s[0] = 10.5 # TypeError
