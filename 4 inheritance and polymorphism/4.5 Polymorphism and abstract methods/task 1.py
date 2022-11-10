@@ -1,5 +1,5 @@
 class Student:
-    def __init__(self, fio, group):
+    def __init__(self, fio: str, group: str):
         self._fio = fio
         self._group = group
         self._lect_marks = []  # оценки за лекции
@@ -29,7 +29,7 @@ class Lector(Mentor):
     def __str__(self):
         return f"Лектор {self._fio}: предмет {self._subject}"
 
-    def set_mark(self, student, mark):
+    def set_mark(self, student: Student, mark: int):
         student.add_lect_marks(mark)
 
 
@@ -40,5 +40,5 @@ class Reviewer(Mentor):
     def __str__(self):
         return f"Эксперт {self._fio}: предмет {self._subject}"
 
-    def set_mark(self, student, mark):
+    def set_mark(self, student: Student, mark: int):
         student.add_house_marks(mark)
