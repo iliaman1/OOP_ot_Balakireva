@@ -37,17 +37,20 @@ class Country(CountryInterface):
         self._name = value
 
     @property
-    def name(self):
-        return self._name
+    def population(self):
+        return self._population
 
-    @name.setter
-    def name(self, value):
-        self._name = value
+    @population.setter
+    def population(self, value):
+        self._population = value
 
     @property
-    def name(self):
-        return self._name
+    def square(self):
+        return self._square
 
-    @name.setter
-    def name(self, value):
-        self._name = value
+    @square.setter
+    def square(self, value):
+        self._square = value
+
+    def get_info(self) -> str:
+        return f"{self._name}: {self._square}, {self._population}"
