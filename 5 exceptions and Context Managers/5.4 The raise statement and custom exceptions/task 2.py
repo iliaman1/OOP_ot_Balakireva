@@ -1,6 +1,6 @@
 class PrimaryKeyError(Exception):
-    def __init__(self, message=None, pk=None, id=None):
-        if not all([message, pk, id]):
+    def __init__(self, pk=None, id=None):
+        if not all([pk, id]):
             self.message = 'Первичный ключ должен быть целым неотрицательным числом'
 
         if id:
